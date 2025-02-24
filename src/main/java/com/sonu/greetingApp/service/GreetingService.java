@@ -36,4 +36,9 @@ public class GreetingService {
     public GreetingEntity saveGreeting(GreetingEntity greetingEntity) {
         return greetingRepository.save(greetingEntity);
     }
+
+    // Delete a greeting by ID
+    public void deleteGreeting(Long id) {
+        greetingRepository.deleteById(id);  // JpaRepository provides this method
+    }
 }

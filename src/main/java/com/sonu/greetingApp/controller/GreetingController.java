@@ -65,4 +65,20 @@ public class GreetingController {
 
         return ResponseEntity.ok(savedGreeting);
     }
+
+    // DELETE method to delete a Greeting by ID
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deleteGreeting(@PathVariable Long id) {
+        // Find the greeting by ID
+        GreetingEntity existingGreeting = greetingService.findGreetingById(id);
+
+        if (existingGreeting == null) {
+            return ResponseEntity.status(404).body("Greeting not found for ID " + id);
+        }
+
+        // Call service to delete the greeting
+        greetingService.deleteGreeting(id);
+
+        return ResponseEntity.ok("Greeting with ID " + id + " deleted successfully.");
+    }
 }
