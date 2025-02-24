@@ -11,11 +11,12 @@ public class GreetingEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String firstName;
     private String lastName;
     private String message;
 
-    // Getters and Setters
+    // Getters and setters
     public Long getId() {
         return id;
     }

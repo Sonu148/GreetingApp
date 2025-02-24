@@ -15,21 +15,10 @@ public class GreetingService {
         this.greetingRepository = greetingRepository;
     }
 
-    // method for generate the message
-    public String getGreetingMessage(String firstName, String lastName) {
-        if (firstName != null && lastName != null) {
-            return "Hello, " + firstName + " " + lastName + "!";
-        } else if (firstName != null) {
-            return "Hello, " + firstName + "!";
-        } else if (lastName != null) {
-            return "Hello, " + lastName + "!";
-        } else {
-            return "Hello, World!";
-        }
-    }
+    // Existing methods...
 
-    // method to save greeting
-    public GreetingEntity saveGreeting(GreetingEntity greetingEntity) {
-        return greetingRepository.save(greetingEntity);
+    // Add this method to find a greeting by ID
+    public GreetingEntity findGreetingById(Long id) {
+        return greetingRepository.findById(id).orElse(null);
     }
 }
