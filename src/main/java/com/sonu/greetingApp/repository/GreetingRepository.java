@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface GreetingRepository extends JpaRepository<GreetingEntity, Long> {
-    // JpaRepository already provides a method to find by ID
+    // JpaRepository already provides a method to find by ID and find all
 }
