@@ -11,31 +11,36 @@ public class GreetingController {
 
     private final GreetingService greetingService;
 
-    // Constructor injection to inject GreetingService into the controller
+    // dependency injection
     @Autowired
     public GreetingController(GreetingService greetingService) {
         this.greetingService = greetingService;
     }
 
-    // using get method
+    // get method for message using service layer
     @GetMapping
     public String getGreeting() {
-        return "{\"" + greetingService.getSimpleGreeting() + "\"}";
+        return "{\"" + greetingService.getGreetingMessage(null, null) + "\"}";
     }
 
-    // using post mapping
+    // post method for message using service layer
     @PostMapping
     public String postGreeting(@RequestBody Greeting greeting) {
-        return "{\"Hello, " + greeting.getName() + "!\"}";
+        String firstName = greeting.getFirstName();
+        String lastName = greeting.getLastName();
+
+        return "{\"" + greetingService.getGreetingMessage(firstName, lastName) + "\"}";
     }
 
-    // using put http method
+    // put method for message using service layer
     @PutMapping
     public String putGreeting(@RequestBody Greeting greeting) {
-        return "{\"Updated greeting for: " + greeting.getName() + "\"}";
+        String firstName = greeting.getFirstName();
+        String lastName = greeting.getLastName();
+        return "{\"Updated greeting for: " + greetingService.getGreetingMessage(firstName, lastName) + "\"}";
     }
 
-    // using delete http method
+    // delete method for message using service layer
     @DeleteMapping
     public String deleteGreeting() {
         return "{\"Greeting deleted.\"}";

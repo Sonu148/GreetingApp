@@ -1,14 +1,24 @@
 package com.sonu.greetingApp.dto;
 
 public class Greeting {
-    private String name;
 
-    // Getter and Setter
-    public String getName() {
-        return name;
+    private String firstName;
+    private String lastName;
+
+    // Getters and Setters
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 }
