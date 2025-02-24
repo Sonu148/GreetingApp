@@ -47,4 +47,22 @@ public class GreetingController {
 
         return ResponseEntity.ok(greetings);
     }
+
+    // PUT method to update a Greeting by ID
+    @PutMapping("/{id}")
+    public ResponseEntity<?> updateGreeting(@PathVariable Long id, @RequestBody GreetingEntity updatedGreeting) {
+        GreetingEntity existingGreeting = greetingService.findGreetingById(id);
+
+        if (existingGreeting == null) {
+            return ResponseEntity.status(404).body("Greeting not found for ID " + id);
+        }
+
+        existingGreeting.setFirstName(updatedGreeting.getFirstName());
+        existingGreeting.setLastName(updatedGreeting.getLastName());
+        existingGreeting.setMessage(updatedGreeting.getMessage());
+
+        GreetingEntity savedGreeting = greetingService.saveGreeting(existingGreeting);
+
+        return ResponseEntity.ok(savedGreeting);
+    }
 }

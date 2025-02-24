@@ -31,4 +31,9 @@ public class GreetingService {
         logger.info("Fetching all greetings");
         return greetingRepository.findAll();
     }
+
+    // Save the updated GreetingEntity
+    public GreetingEntity saveGreeting(GreetingEntity greetingEntity) {
+        return greetingRepository.save(greetingEntity);
+    }
 }
